@@ -76,7 +76,7 @@ def get_latest_rates(from_currency, to_currency):
     
     except Exception as e:
         # Handle any exceptions that may occur during the request
-        print(f"Error: {str(e)}")
+        print(f"Error: Try selecting another currency")
         return None, None
 
 def get_historical_rate(from_currency, to_currency, from_date):
@@ -102,6 +102,8 @@ def get_historical_rate(from_currency, to_currency, from_date):
     float
         Latest FX conversion rate or None in case of error
     """
+
+    
     try:
         # Send a GET request to the historical rate endpoint
         status_code, response_text = get_url(f"{BASE_URL}/{from_date}?from={from_currency}&to={to_currency}")
