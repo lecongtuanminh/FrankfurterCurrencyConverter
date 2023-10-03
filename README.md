@@ -7,21 +7,21 @@
 ## Description
 This Python script provides a set of functions for interacting with the Frankfurter API to perform currency conversion and retrieve currency information. It includes the `get_currencies_list` function to fetch the list of available currencies, the `get_latest_rates` function to obtain the latest exchange rates, and the `get_historical_rates` to retrieve historical exchange rates based on specific dates. The code is designed to be easy to use and integrates with the Frankfurter API for accurate and up-to-date currency conversion needs.
 
-During the development of the app, an issue was encountered with the rate returned by the call to the Frankfurter API. The **GET** call to the API has the default amount of 1, which returns the exact conversion rate from one currency to another. However, when the `amount` parameter is changed, the API returns the rate multiplied by the amount specified. This issue was resolved by setting the default amount to 1 and calculating the converted amount of money in the `format_output` function.
+During the development of the app, an issue was encountered with the rate returned by the call to the Frankfurter API. The *GET* call to the API has the default amount of 1, which returns the exact conversion rate from one currency to another. However, when the `amount` parameter is changed, the API returns the rate multiplied by the amount specified. This issue was resolved by setting the default amount to 1 and calculating the converted amount of money in the `format_output` function.
 
 Additional functions could be developed to make multiple calls to the API and plot the conversion rates of currencies into graphs for better visualization or time series analysis. This would enable users to gain deeper insights into currency trends over time.
 Please note that the current version of the app focuses on meeting the basic requirements of currency conversion, as specified for the assignment. Future development efforts can explore these enhancements for a more comprehensive currency analysis tool.
 
-
+**NOTE:** You can go to [my GitHub](https://github.com/lecongtuanminh/FrankfurterCurrencyConverter) if you want to clone this repository instead of downloading it.
 
 ## How to Setup
 This guide provides a step-by-step description of how to set up the development environment for the Currency Converter App. Ensure that you have Python installed on your system.
 
 **Python Version**  
-The Currency Converter App is developed using Python 3.11.4 and Streamlit version 1.26.0 . Please make sure you have an appropriate version of Python installed.
+The *Currency Converter App* is developed using *Python 3.11.4* and *Streamlit 1.26.0*. Please make sure you have an appropriate version of Python installed.
 
 **Package Installation**  
-To run the Currency Converter App, you need to install the required packages. You can do this using the Python package manager, pip. Open your terminal or command prompt and follow these steps:
+To run the Currency Converter App, you need to install the required packages. You can do this using the Python package manager, `pip`. Open your terminal or command prompt and follow these steps:
 
 1. Installing `python`:  
 The application was developed using a Mac machine, which already has Python pre-installed. However, in case you have a Windows machine, you can visit the official Python website [here](https://www.python.org/downloads/windows/) and click on the "Latest Python 3 Release" link to download the latest Python installer for Windows. The Python package you download includes `datetime` and `json` as built-in modules so additional downloads are unnecessary.
