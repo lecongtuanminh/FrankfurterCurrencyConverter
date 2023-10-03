@@ -37,7 +37,7 @@ def get_currencies_list():
         print(f"Error: {str(e)}")
         return None
 
-def get_latest_rates(from_currency, to_currency):
+def get_latest_rates(from_currency, to_currency, amount):
     """
     Function that will call the relevant API endpoint from Frankfurter in order to get the latest conversion rate between the provided currencies. 
     After the API call, it will perform a check to see if the API call was successful.
@@ -62,7 +62,7 @@ def get_latest_rates(from_currency, to_currency):
     """
     try:
         # Send a GET request to the conversion rate endpoint
-        status_code, response_text = get_url(f"{BASE_URL}/latest?from={from_currency}&to={to_currency}")
+        status_code, response_text = get_url(f"{BASE_URL}/latest?amount={amount}&from={from_currency}&to={to_currency}")
         
         # Check if the request was successful (status code 200)
         if status_code == 200:
@@ -80,7 +80,7 @@ def get_latest_rates(from_currency, to_currency):
         print(f"Error: Try selecting another currency")
         return None, None
 
-def get_historical_rate(from_currency, to_currency, from_date):
+def get_historical_rate(from_currency, to_currency, from_date, amount):
     """
     Function that will call the relevant API endpoint from Frankfurter in order to get the conversion rate for the given currencies and date
     After the API call, it will perform a check to see if the API call was successful.
@@ -104,10 +104,9 @@ def get_historical_rate(from_currency, to_currency, from_date):
         Latest FX conversion rate or None in case of error
     """
 
-    
     try:
         # Send a GET request to the historical rate endpoint
-        status_code, response_text = get_url(f"{BASE_URL}/{from_date}?from={from_currency}&to={to_currency}")
+        status_code, response_text = get_url(f"{BASE_URL}/{from_date}?amount={amount}&from={from_currency}&to={to_currency}")
         
         # Check if the request was successful (status code 200)
         if status_code == 200:

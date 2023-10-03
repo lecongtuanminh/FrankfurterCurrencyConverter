@@ -13,18 +13,21 @@ currencies_list = get_currencies_list()
 # If the list of available currencies is None, display an error message in Streamlit App
 if currencies_list is None:
     st.error("Error: No data from API was retrieved. Please check your data source.")
-# Add input fields for capturing amount, from and to currencies
 else:
     pass
 
-amount = st.number_input("Amount to convert", value=50)
+# Add input fields for capturing amount, from and to currencies
+amount = st.number_input("Amount to convert", min_value= 0.01, value=50.00, step = 0.1)
 from_currency = st.selectbox('From Currency', currencies_list)
 to_currency = st.selectbox('To Currency', currencies_list)
 
+# Check if the from and to currencies are different 
+if from_currency == to_currency:
+    st.error('Warning: Select two different currencies')
+    
 # Add a button to get and display the latest rate for selected currencies and amount
 if st.button("Get Latest Rate"):
-    date = get_latest_rates(from_currency,to_currency)[0]
-    rate = get_latest_rates(from_currency,to_currency)[1]
+    date, rate = get_latest_rates(from_currency,to_currency, 1)
     inverse_rate = reverse_rate(rate)
 
     # Display a header and text when the button is clicked
@@ -36,7 +39,7 @@ from_date = st.date_input("Select a date")
 
 # Add a button to get and display the historical rate for selected date, currencies and amount
 if st.button("Get Historical Rate"):
-    rate = get_historical_rate(from_currency, to_currency, from_date)
+    rate = get_historical_rate(from_currency, to_currency, from_date, 1)
     inverse_rate = reverse_rate(rate)
 
     # Display a header and text when the button is clicked
