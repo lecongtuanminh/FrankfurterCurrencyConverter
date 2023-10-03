@@ -20,6 +20,7 @@ def get_currencies_list():
         List of available currencies or None in case of error
     """
     try:
+        # Send a GET request to currencies endpoint
         status_code, response_text = get_url(f"{BASE_URL}/currencies")
 
         if status_code == 200:
